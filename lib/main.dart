@@ -1,8 +1,12 @@
 import 'package:e_commerce/routes/routes.dart';
 import 'package:e_commerce/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-void main() {
+import 'helpers/di.dart' as di;
+
+void main() async{
+    await di.init();
   runApp(const MyApp());
 }
 
@@ -12,7 +16,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -20,7 +24,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
      initialRoute: Routes.splashScreen,
-     routes: pages,
+    // routes: pages,
+      getPages: pages,
+
     );
   }
 }
