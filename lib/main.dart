@@ -1,5 +1,6 @@
 import 'package:e_commerce/routes/routes.dart';
 import 'package:e_commerce/utils/colors.dart';
+import 'package:e_commerce/view/pages/auth/otp_verification.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,12 +21,15 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        fontFamily: "Manrope",
         primaryColor: CustomColors.primaryColor,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-     initialRoute: Routes.splashScreen,
+
+     //initialRoute: Routes.splashScreen,
     // routes: pages,
-      getPages: pages,
+    //  getPages: pages,
+      home:OtpVerification(),
 
     );
   }

@@ -1,5 +1,5 @@
 
-import 'package:e_commerce/view/pages/login/login_screen.dart';
+import 'package:e_commerce/view/pages/auth/login_screen.dart';
 import 'package:e_commerce/view/pages/splash/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
