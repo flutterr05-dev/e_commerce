@@ -21,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
   jumToNextPage() {
     Future.delayed(Duration(seconds: 3), () {
    //   Navigator.pushReplacementNamed(context, Routes.loginScreen);
-   Get.offAllNamed(Routes.loginScreen);
+   Get.offAllNamed(Routes.mainScreen);
 
     });
   }
