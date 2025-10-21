@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../utils/colors.dart';
+import '../../../base/custom_title.dart';
 
 class ChooseBrands extends StatelessWidget {
    ChooseBrands({super.key});
@@ -37,29 +38,7 @@ class ChooseBrands extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Row(
-            children: [
-              Expanded(
-                child: Text(
-                  "Choose Brand",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 17,
-                  ),
-                ),
-              ),
-              Text(
-                "See All",
-                style: TextStyle(
-                  color: CustomColors.greyColor,
-                  fontSize: 15,
-                ),
-              ),
-            ],
-          ),
-        ),
+        CustomTitle(title: 'Choose Brands',subTitle: "View All",onTap:(){},),
         SizedBox(height: 20),
         SizedBox(
           height: 50,
@@ -112,3 +91,5 @@ class ChooseBrands extends StatelessWidget {
     );
   }
 }
+
+

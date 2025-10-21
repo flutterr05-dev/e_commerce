@@ -1,7 +1,11 @@
 import 'package:e_commerce/utils/colors.dart';
+import 'package:e_commerce/view/base/custom_title.dart';
 import 'package:e_commerce/view/pages/home/components/choose_brands.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../mainScreen/main_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,10 +15,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,13 +93,53 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(height: 20),
 
-
             /// <======== Choose Brand ========>
             ChooseBrands(),
 
-            SizedBox(height: 20,
-              ),
+            /// <======== New Arrivals ========>
+            SizedBox(height: 20),
+            CustomTitle(title: "New Arrivals",subTitle: "View All",),
+            SizedBox(height: 20),
+            MasonryGridView.count(
+              crossAxisCount: 2,
+              mainAxisSpacing: 10,
+              crossAxisSpacing: 10,
+              itemCount: 10,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              itemBuilder: (context, index) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Stack(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image(
+                            height: 200,
+                            width: double.infinity,
+                            image: AssetImage(
+                              "assets/images/product_image1.png",
+                            ),
+                            fit: BoxFit.cover
+                          ),
+                        ),
+                        Positioned(
+                          top: 10,
+                          right: 10,
+                          child: SvgPicture.asset("assets/icons/fev.svg"),
+                        ),
+                      ],
+                    ),
+                    Text("Product Name",style: TextStyle(fontSize: 16,fontWeight:FontWeight.w500,),maxLines: 2,overflow: TextOverflow.ellipsis,),
+                    SizedBox(height: 5),
+                    Text("\$120",style: TextStyle(fontSize: 16,fontWeight:FontWeight.bold,),),
 
+                  ],
+                );
+              },
+            ),
           ],
         ),
       ),
@@ -108,11 +148,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
   _appBar() {
     return AppBar(
-      leading: Padding(
-        padding: const EdgeInsets.only(left: 20),
-        child: CircleAvatar(
-          backgroundColor: Color(0xffF5F6FA),
-          child: SvgPicture.asset("assets/icons/menu.svg"),
+      leading: InkWell(
+        onTap: (){
+          scaffoldKey.currentState!.openDrawer();
+        },
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: CircleAvatar(
+            backgroundColor: Color(0xffF5F6FA),
+            child: SvgPicture.asset("assets/icons/menu.svg"),
+          ),
         ),
       ),
 
@@ -128,3 +173,5 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
